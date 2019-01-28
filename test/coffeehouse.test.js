@@ -45,4 +45,17 @@ contract('CoffeeHouse', accounts => {
     assert.equal(name, 'user1changed', 'Username of the created user is incorrect')
   });
 
+  // A test for contract owner to be able to delete a user, would test the profile deletion workflow in case a user wants to delete their profile
+  it('Should delete a user', async () => {
+    // Get the contract instance
+    const coffeeHouse = await CoffeeHouse.deployed()
+
+    // Delete user2
+    await coffeeHouse.deleteUser({ from: user2 })
+
+    // User should no longer be registered
+    const user = await coffeeHouse.registeredUsers(user2)
+    assert.equal(user, false, 'Failed to delete the user!')
+  });
+
 })
