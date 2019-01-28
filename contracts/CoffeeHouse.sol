@@ -43,8 +43,6 @@ contract CoffeeHouse is Ownable{
     // Check that the user doesn't exist already
     modifier notAlreadyRegistered() { require(!registeredUsers[msg.sender], "User is already registered"); _;}
 
-    // modifier itemPresent(uint itemId) { require( bytes(items[itemId].name).length != 0  ); _;}
-
     modifier itemIdCheck(uint itemId) { require( itemId < itemsCount ); _;}
 
     modifier paidEnough(uint _price) { require(msg.value >= _price); _;}
@@ -68,6 +66,7 @@ contract CoffeeHouse is Ownable{
     event ItemBought(uint number);
     event itemAdded(uint itemId);
     event userCreated(address _address);
+    event userUpdated(address _address);
     event userDeleted(address _address);
     event toggleFreeze();
 
@@ -113,7 +112,6 @@ contract CoffeeHouse is Ownable{
     payable
     stopInEmergency()
     checkValue(itemId)
-    // itemPresent(itemId)
     itemIdCheck(itemId)
     paidEnough(items[itemId].price)
     // isRegistered()
@@ -161,7 +159,26 @@ contract CoffeeHouse is Ownable{
         emit userCreated(msg.sender);
 
         return registeredUsers[msg.sender];
-    }    
+    }
+    
+    /** @dev Updates a user.
+      * @param _name new name of the user.
+      * @return status Whether the user was updated.
+      */
+    function updateUser(string memory _name)
+    public
+    stopInEmergency()
+    isRegistered()  // Check that the user doesn't exist already
+    returns(bool)
+    {
+        // Create the user using the User struct
+        users[msg.sender].name = _name;
+        
+        // Emit the User updated event
+        emit userUpdated(msg.sender);
+
+        return true;
+    }
     
     /** @dev A function to delete a user, can only be performed by the contract owner
       * @return status Whether the user was deleted.
