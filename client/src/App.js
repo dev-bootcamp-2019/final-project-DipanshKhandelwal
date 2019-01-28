@@ -202,11 +202,13 @@ class App extends Component {
           }
         </div>
         {
+          this.state.accounts[0] == this.state.owner ?
           this.state.items.length === 0 ?
             <button onClick={this.upload} disabled={this.state.items.length !== 0} >
               Add items
             </button>
             : null
+          : null
         }
       </div>
     );
