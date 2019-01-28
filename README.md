@@ -75,7 +75,11 @@ truffle test
 - Goto [localhost:3000](http://localhost:3000) and login into metamask using the mnemonic obtained from ganache.
 - Allow connecting the app to web3
 - Owner's account will be already created and will be the one who initiated the contract.
-- You can then switch to a different metamask account and register/donate etc.
+- You can then switch to a different metamask account and register/buy etc.
+
+<img src="./client/src/assets/screenshots/metamask1.png" align="center" width="150">
+<img src="./client/src/assets/screenshots/metamask2.png" align="center" width="600">
+<img src="./client/src/assets/screenshots/metamask3.png" align="center" width="150">
 
 ### Future work
 - Better handling for users data
