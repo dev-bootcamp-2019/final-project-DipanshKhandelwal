@@ -2,7 +2,7 @@ const path = require("path");
 const fs = require('fs');
 const fs2 = require('fs');
 
-const HDWalletProvider = require('truffle-hdwallet-provider');
+const HDWalletProvider = require('./client/node_modules/truffle-hdwallet-provider');
 
 const infuraKey = fs.readFileSync(".secret").toString().trim();
 const mnemonic = fs2.readFileSync(".mnemonic").toString().trim();
