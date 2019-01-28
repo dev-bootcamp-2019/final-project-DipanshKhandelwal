@@ -73,18 +73,7 @@ contract CoffeeHouse is Ownable{
 
     // constructor
     constructor() public {}
-    
-    function hashCompareWithLengthCheck(string memory a, string memory b)
-    internal
-    pure
-    returns (bool) {
-        if(bytes(a).length != bytes(b).length) {
-            return false;
-        } else {
-            return keccak256(bytes(a)) == keccak256(bytes(b));
-        }
-    }
-    
+
     /** @dev Add new item.
       * @param _name name of the item.
       * @param _price price of the item.
@@ -131,9 +120,9 @@ contract CoffeeHouse is Ownable{
     view
     public
     itemIdCheck(itemId)
-    returns(uint)
-    {
-        return users[msg.sender].assets[itemId];
+    returns(uint number)
+    {   
+        number = users[msg.sender].assets[itemId];
     }
     
     /** @dev Creates a new user.
