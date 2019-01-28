@@ -113,4 +113,17 @@ contract('CoffeeHouse', accounts => {
 
   });
 
+  // A test to buy a item
+  it('Should buy a item', async () => {
+    // Instance of the deployed contract
+    const coffeeHouse = await CoffeeHouse.deployed()
+
+    // itemId of coffee is zero
+
+    // Call the addItem function to save the item info in the blockchain
+    await coffeeHouse.buyItem(0, { from: user1, value: 200 });
+    const number = await coffeeHouse.getAssetItemCount(0, { from: user1 });
+    assert.equal(1, number, 'Number of items in profile is incorrect')
+  });
+
 })
