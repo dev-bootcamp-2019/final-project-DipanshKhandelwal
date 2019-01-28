@@ -1,5 +1,8 @@
 pragma solidity ^0.5.0;
 
+import "./Ownable.sol";
+import "./SafeMath.sol";
+
 /** @title Coffee House */
 contract CoffeeHouse is Ownable{
     
