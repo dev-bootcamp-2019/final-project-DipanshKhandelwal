@@ -6,7 +6,6 @@ const Inventory = (props) => (
   <Grid divided='vertically' style={{ display: 'flex', flex: 1, justifyContent: 1, padding: 20 }} >
     <Grid.Row columns={3} style={{ justifyContent: 'center' }} >
       {
-        props.boughtItem ?
         props.boughtItems.map((boughtItem) => {
           if (boughtItem.num > 0) {
             return (
@@ -16,12 +15,11 @@ const Inventory = (props) => (
             )
           }
         })
-        :
-        <div>
-          <Header size='huge'>You don't have anything !!</Header>
-          <Icon loading size='big' name='dont' />
-        </div>
       }
+      <div>
+        <Header size='huge'>You don't have anything else !!</Header>
+        <Icon loading size='big' name='dont' />
+      </div>
     </Grid.Row>
   </Grid>
 )

@@ -58,38 +58,12 @@ class App extends Component {
 
   runExample = async () => {
     const { accounts, contract, web3 } = this.state;
-
-    // Stores a given value, 5 by default.
-    // await contract.methods.set(5).send({ from: accounts[0] });
-
-    // // Get the value from the contract to prove it worked.
-    // const response = await contract.methods.get().call();
-
-    // // Update state with the result.
-    // this.setState({ storageValue: response });
-
-    await contract.methods.createUser("dipansh2").call().then((res) => console.log(res))
+    // await contract.methods.createUser("dipansh2").call().then((res) => console.log(res))
     console.log(accounts[0])
-    await contract.methods.owner().call().then((result) => this.setState({ owner: result }))
+    // await contract.methods.owner().call().then((result) => this.setState({ owner: result }))
 
-    await contract.methods.isAddressRegistered(accounts[0]).call().then((result) => { console.log(result) })
+    // await contract.methods.isAddressRegistered(accounts[0]).call().then((result) => { console.log(result) })
     // await contract.methods.registeredUsers(accounts[0]).call().then((result) => {console.log(result); this.setState({ userRegistered: result })})
-
-    // await contract.methods.addItem("doughnut", 650).send({ from: accounts[0] });
-    // await contract.methods.addItem("beer", 1050).send({ from: accounts[0] });
-    // await contract.methods.addItem("pancakes", 1500).send({ from: accounts[0] });
-    // await contract.methods.addItem("pineapple", 200).send({ from: accounts[0] });
-    // await contract.methods.addItem("tea", 700).send({ from: accounts[0] });
-    // await contract.methods.addItem("coffee", 150).send({ from: accounts[0] });
-    // await contract.methods.addItem("lemonade", 400).send({ from: accounts[0] });
-    // await contract.methods.addItem("jelly", 100).send({ from: accounts[0] });
-
-    // contract.methods.buyItem(0).send({ from: accounts[0], value: 900000 }).then((res) => console.log(res))
-    // await contract.methods.buyItem(5).send({ from: accounts[0], value: 9000 });
-    // await contract.methods.buyItem(5).send({ from: accounts[0], value: 600 });
-    // await contract.methods.buyItem(6).send({ from: accounts[0], value: 450 });
-    // await contract.methods.buyItem(6).send({ from: accounts[0], value: 450 });
-    // await contract.methods.buyItem(7).send({ from: accounts[0], value: 200 });
 
     const itemsCount = await contract.methods.itemsCount().call();
     
@@ -172,6 +146,7 @@ class App extends Component {
             .getAssetItemCount(i)
             .call()
             .then(res => {
+              console.log("dekhlooooo", res)
               items[i] = {
                 itemId: i,
                 num: res[0]
