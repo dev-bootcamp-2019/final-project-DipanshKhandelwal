@@ -26,4 +26,23 @@ contract('CoffeeHouse', accounts => {
     assert.equal('user1', name, 'Username of the created user is incorrect')
   });
 
+  // A test check whether a user is able to update their profile
+  it('Should update the profile of a user', async () => {
+    // Instance of the deployed contract
+    const coffeeHouse = await CoffeeHouse.deployed()
+
+    // Call the update user function to update the info of the user
+    await coffeeHouse.updateUser('user1changed', { from: user1 })
+
+    // Get the updated user
+    const userData = await coffeeHouse.users.call(user1)
+
+    // Destructure the details of the updated user
+    const { name, userAddress } = userData
+
+    // Run assertions for all the user and verify correctness
+    assert.equal(user1, userAddress, 'Address of the created user is incorrect')
+    assert.equal(name, 'user1changed', 'Username of the created user is incorrect')
+  });
+
 })
