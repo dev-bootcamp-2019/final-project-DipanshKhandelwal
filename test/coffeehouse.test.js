@@ -6,6 +6,8 @@ contract('CoffeeHouse', accounts => {
   const user2 = accounts[2]
   const testUser = accounts[3]
 
+  // Tests for users
+
   // A test to create a user, this contract would test if user is able to register successfully
   it('Should create a new user', async () => {
     // Instance of the deployed contract
@@ -56,6 +58,25 @@ contract('CoffeeHouse', accounts => {
     // User should no longer be registered
     const user = await coffeeHouse.registeredUsers(user2)
     assert.equal(user, false, 'Failed to delete the user!')
+  });
+
+  // A test to check if a user with an address exists or not, would be needed to check if a user is registered
+  it('Should check if a user is registered or not', async () => {
+    // Get instance of deployed contract
+    const coffeeHouse = await CoffeeHouse.deployed()
+
+    // Initially the user doesn't exist
+    let checkUser = await coffeeHouse.registeredUsers(testUser, { from: testUser })
+
+    // Assertion to check that a user doesn't exist
+    assert.equal(checkUser, false, 'User should not exist')
+
+    // User should exists now
+    checkUser = await coffeeHouse.registeredUsers(user1, { from: user1 })
+
+    // Assertion to check that user exists now
+    assert.equal(checkUser, true, 'User should exist')
+
   });
 
 })
