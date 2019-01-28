@@ -79,4 +79,38 @@ contract('CoffeeHouse', accounts => {
 
   });
 
+  // Test for items
+
+  // A test to create a item
+  it('Should create a new item', async () => {
+    // Instance of the deployed contract
+    const coffeeHouse = await CoffeeHouse.deployed()
+
+    nameCoffee = 'coffee'
+    priceCoffee = 150
+    nameTea = 'tea'
+    priceTea = 100
+
+    // Call the addItem function to save the item info in the blockchain
+    await coffeeHouse.addItem(nameCoffee, priceCoffee, { from: owner });
+    await coffeeHouse.addItem(nameTea, priceTea, { from: owner });
+
+    // Get the created item
+    const returnedCoffee = await coffeeHouse.items.call(0)
+    const returnedTea = await coffeeHouse.items.call(1)
+
+    // Destructure the details of the created items
+    const { name, itemId, price } = returnedCoffee
+    // Run assertions for all the items fields and verify correctness
+    assert.equal(nameCoffee, name, 'Name of the item is incorrect')
+    assert.equal(priceCoffee, price, 'Price of the item is incorrect')
+    assert.equal(0, itemId, 'Id of the item is incorrect')
+
+    // Run assertions for all the items fields and verify correctness
+    assert.equal(nameTea, returnedTea.name, 'Name of the item is incorrect')
+    assert.equal(priceTea, returnedTea.price, 'Price of the item is incorrect')
+    assert.equal(1, returnedTea.itemId, 'Id of the item is incorrect')
+
+  });
+
 })
