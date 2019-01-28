@@ -4,7 +4,7 @@ self.__precacheManifest = [
     "url": "/final-project-DipanshKhandelwal/static/media/mussel.83f369b1.png"
   },
   {
-    "revision": "bf033783ca4079a9303e",
+    "revision": "384d9158156abadbd656",
     "url": "/final-project-DipanshKhandelwal/static/css/main.18d18629.chunk.css"
   },
   {
@@ -204,8 +204,8 @@ self.__precacheManifest = [
     "url": "/final-project-DipanshKhandelwal/static/media/muffin.5a5861bf.png"
   },
   {
-    "revision": "bf033783ca4079a9303e",
-    "url": "/final-project-DipanshKhandelwal/static/js/main.bf033783.chunk.js"
+    "revision": "384d9158156abadbd656",
+    "url": "/final-project-DipanshKhandelwal/static/js/main.384d9158.chunk.js"
   },
   {
     "revision": "a8e3217973e1e3365cae721c408c1cf6",
@@ -344,20 +344,20 @@ self.__precacheManifest = [
     "url": "/final-project-DipanshKhandelwal/static/media/flags.9c74e172.png"
   },
   {
-    "revision": "0ab54153eeeca0ce03978cc463b257f7",
-    "url": "/final-project-DipanshKhandelwal/static/media/icons.0ab54153.woff2"
-  },
-  {
     "revision": "8e3c7f5520f5ae906c6cf6d7f3ddcd19",
     "url": "/final-project-DipanshKhandelwal/static/media/icons.8e3c7f55.eot"
   },
   {
-    "revision": "faff92145777a3cbaf8e7367b4807987",
-    "url": "/final-project-DipanshKhandelwal/static/media/icons.faff9214.woff"
+    "revision": "0ab54153eeeca0ce03978cc463b257f7",
+    "url": "/final-project-DipanshKhandelwal/static/media/icons.0ab54153.woff2"
   },
   {
     "revision": "b87b9ba532ace76ae9f6edfe9f72ded2",
     "url": "/final-project-DipanshKhandelwal/static/media/icons.b87b9ba5.ttf"
+  },
+  {
+    "revision": "faff92145777a3cbaf8e7367b4807987",
+    "url": "/final-project-DipanshKhandelwal/static/media/icons.faff9214.woff"
   },
   {
     "revision": "701ae6abd4719e9c2ada3535a497b341",
@@ -376,12 +376,12 @@ self.__precacheManifest = [
     "url": "/final-project-DipanshKhandelwal/static/media/outline-icons.ad97afd3.ttf"
   },
   {
-    "revision": "962a1bf31c081691065fe333d9fa8105",
-    "url": "/final-project-DipanshKhandelwal/static/media/icons.962a1bf3.svg"
-  },
-  {
     "revision": "82f60bd0b94a1ed68b1e6e309ce2e8c3",
     "url": "/final-project-DipanshKhandelwal/static/media/outline-icons.82f60bd0.svg"
+  },
+  {
+    "revision": "962a1bf31c081691065fe333d9fa8105",
+    "url": "/final-project-DipanshKhandelwal/static/media/icons.962a1bf3.svg"
   },
   {
     "revision": "e8c322de9658cbeb8a774b6624167c2c",
@@ -404,7 +404,7 @@ self.__precacheManifest = [
     "url": "/final-project-DipanshKhandelwal/static/css/1.2a93b227.chunk.css"
   },
   {
-    "revision": "86f832ade74ec529dc550d1311606e4e",
+    "revision": "d78dc59a501796f4a5f1883a44767dca",
     "url": "/final-project-DipanshKhandelwal/index.html"
   }
 ];
