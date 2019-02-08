@@ -116,13 +116,13 @@ contract CoffeeHouse is Ownable{
       * @param itemId id of the item.
       * @return number of items present.
       */
-    function getAssetItemCount (uint itemId)
+    function getAssetItemCount (uint itemId, address sender)
     public
     view
     itemIdCheck(itemId)
     returns(uint number)
     {   
-        number = users[msg.sender].assets[itemId];
+        number = users[sender].assets[itemId];
     }
     
     /** @dev Creates a new user.
