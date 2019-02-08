@@ -18,7 +18,7 @@ const Inventory = (props) => (
       }
     </Grid.Row>
     <Grid.Row>
-      <div>
+      <div style={{ justifyContent: 'center', display: 'flex', flex: 1 }} >
         <Header size='huge'>You don't have anything else !!</Header>
         <Icon loading size='big' name='dont' />
       </div>

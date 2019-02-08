@@ -11,6 +11,7 @@ const Profile = (props) => (
         {props.balance} Ξ
       </Header>
     </Header>
+    <a><h2 style={{ cursor: 'cell' }} onClick={()=>props.setTab('inventory')} >Check your inventory !!</h2></a>
   </div>
 )
 

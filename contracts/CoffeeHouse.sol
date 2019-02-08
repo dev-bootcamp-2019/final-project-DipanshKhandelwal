@@ -38,14 +38,14 @@ contract CoffeeHouse is Ownable{
     // Function Modifiers
     
     // Check that the user is registered
-    modifier isRegistered() { require(registeredUsers[msg.sender]); _;}
+    modifier isRegistered() {require(registeredUsers[msg.sender], "User not registered"); _;}
     
     // Check that the user doesn't exist already
-    modifier notAlreadyRegistered() { require(!registeredUsers[msg.sender], "User is already registered"); _;}
+    modifier notAlreadyRegistered() {require(!registeredUsers[msg.sender], "User is already registered"); _;}
 
-    modifier itemIdCheck(uint itemId) { require( itemId < itemsCount ); _;}
+    modifier itemIdCheck(uint itemId) {require(itemId < itemsCount, "Id does not exist"); _;}
 
-    modifier paidEnough(uint _price) { require(msg.value >= _price); _;}
+    modifier paidEnough(uint _price) {require(msg.value >= _price, "User hasn't paid enough"); _;}
 
     modifier checkValue(uint itemId) {
         //refund them after pay for item (why it is before, _ checks for logic before func)
@@ -57,8 +57,8 @@ contract CoffeeHouse is Ownable{
     }
     
     // Modifiers in emergency
-    modifier stopInEmergency {require(!frozen, "This action is not allowed as contract is frozen"); _; }
-    modifier onlyInEmergency {require(frozen, "This action is not allowed as this is only available in case of emergency"); _; }
+    modifier stopInEmergency {require(!frozen, "This action is not allowed as contract is frozen"); _;}
+    modifier onlyInEmergency {require(frozen, "This action is not allowed as this is only available in case of emergency"); _;}
     
 
     // Events
@@ -117,8 +117,8 @@ contract CoffeeHouse is Ownable{
       * @return number of items present.
       */
     function getAssetItemCount (uint itemId)
-    view
     public
+    view
     itemIdCheck(itemId)
     returns(uint number)
     {   

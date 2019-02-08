@@ -60,9 +60,8 @@ class App extends Component {
     const { accounts, contract, web3 } = this.state;
     // await contract.methods.createUser("dipansh2").call().then((res) => console.log(res))
     console.log(accounts[0])
-    // await contract.methods.owner().call().then((result) => this.setState({ owner: result }))
+    await contract.methods.owner().call().then((result) => this.setState({ owner: result }))
 
-    // await contract.methods.isAddressRegistered(accounts[0]).call().then((result) => { console.log(result) })
     // await contract.methods.registeredUsers(accounts[0]).call().then((result) => {console.log(result); this.setState({ userRegistered: result })})
 
     const itemsCount = await contract.methods.itemsCount().call();
@@ -117,11 +116,8 @@ class App extends Component {
             })
             .catch(console.error)
             .finally(() => {
-              console.log(items, i)
-              console.log(items[i])
               finalItems.push(items[i]);
               if (i === num - 1) {
-                console.log(finalItems)
                 this.setState({ items });
               }
             });
@@ -131,7 +127,6 @@ class App extends Component {
   }
 
   getAssets = async () => {
-    console.log("run hua")
     const { accounts, contract } = this.state;
 
     let items = [];
@@ -146,7 +141,7 @@ class App extends Component {
             .getAssetItemCount(i)
             .call()
             .then(res => {
-              console.log("dekhlooooo", res)
+              console.log(res)
               items[i] = {
                 itemId: i,
                 num: res[0]
@@ -156,11 +151,8 @@ class App extends Component {
             .finally(() => {
               if (items[i].name !== '0') {
                 finalItems.push(items[i]);
-                console.log(items, i)
-                console.log(items[i])
               }
               if (i === num - 1) {
-                console.log(finalItems)
                 this.setState({ boughtItems: items });
               }
             });
@@ -172,8 +164,7 @@ class App extends Component {
 
   buyItem = (itemId) => {
     console.log(itemId)
-    this.state.contract.methods.buyItem(itemId).send({ from: this.state.accounts[0], value: 900000 }).then((res) => console.log(res))
-    this.getAssets()
+    this.state.contract.methods.buyItem(itemId).send({ from: this.state.accounts[0], value: 900000 }).then((res) => {console.log(res); this.getAssets();})
   }
 
   render() {
@@ -197,7 +188,7 @@ class App extends Component {
                 <Inventory data={this.state.items} boughtItems={this.state.boughtItems} buyItem={this.buyItem} />
                 :
                 this.state.tab === 'profile' ?
-                  <Profile user={this.state.accounts[0]} balance={this.state.balance} />
+                  <Profile setTab={this.setTab} user={this.state.accounts[0]} balance={this.state.balance} />
                   : null
           }
         </div>
