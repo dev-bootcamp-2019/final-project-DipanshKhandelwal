@@ -1,6 +1,6 @@
 import React from 'react'
 import Cardview from './Cardview'
-import { Grid, Image } from 'semantic-ui-react'
+import { Grid } from 'semantic-ui-react'
 
 class Store extends React.Component {
   render() {

@@ -14,6 +14,7 @@ const Inventory = (props) => (
               </Grid.Column>
             )
           }
+          return null
         })
       }
     </Grid.Row>

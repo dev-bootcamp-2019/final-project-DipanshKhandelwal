@@ -27,7 +27,7 @@ class App extends Component {
     this.setState({ tab: name })
   }
 
-  addFileToIpfs = (file) => {
+  addFileToIpfs = async (file) => {
     await ipfs.files.add(file, (err, res) => {
       if (err) {
         console.log(err);
@@ -104,7 +104,7 @@ class App extends Component {
   }
 
   getItems = async () => {
-    const { accounts, contract } = this.state;
+    const { contract } = this.state;
 
     let items = [];
     let finalItems = [];
@@ -203,7 +203,7 @@ class App extends Component {
           }
         </div>
         {
-          this.state.accounts[0] == this.state.owner ?
+          this.state.accounts[0] === this.state.owner ?
           this.state.items.length === 0 ?
             <button onClick={this.upload} disabled={this.state.items.length !== 0} >
               Add items

@@ -122,7 +122,7 @@ contract('CoffeeHouse', accounts => {
 
     // Call the addItem function to save the item info in the blockchain
     await coffeeHouse.buyItem(0, { from: user1, value: 200 });
-    const number = await coffeeHouse.getAssetItemCount(0, { from: user1 });
+    const number = await coffeeHouse.getAssetItemCount(0, user1, { from: user1 });
     assert.equal(1, number, 'Number of items in profile is incorrect')
   });
 
