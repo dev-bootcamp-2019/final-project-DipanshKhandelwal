@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import SimpleStorageContract from "./contracts/SimpleStorage.json";
 import CoffeeHouse from "./contracts/CoffeeHouse.json";
 import getWeb3 from "./utils/getWeb3";
 import Navbar from './components/Navbar'
@@ -7,7 +6,7 @@ import Store from './components/Store'
 import Inventory from './components/Inventory'
 import Profile from './components/Profile'
 import "./App.css";
-import { Header } from "semantic-ui-react";
+import ipfs from './ipfs'
 
 class App extends Component {
   state = {
@@ -27,6 +26,16 @@ class App extends Component {
   setTab = (name) => {
     this.setState({ tab: name })
   }
+
+  addFileToIpfs = (file) => {
+    await ipfs.files.add(file, (err, res) => {
+      if (err) {
+        console.log(err);
+        return;
+      }
+      console.log(res[0].hash);
+
+  })}
 
   componentDidMount = async () => {
     try {
@@ -59,8 +68,9 @@ class App extends Component {
   runExample = async () => {
     const { accounts, contract, web3 } = this.state;
     // await contract.methods.createUser("dipansh2").call().then((res) => console.log(res))
-    console.log(accounts[0])
+    console.log("Present account : ", accounts[0])
     await contract.methods.owner().call().then((result) => this.setState({ owner: result }))
+    console.log("Owner's account : ", this.state.owner)
 
     // await contract.methods.registeredUsers(accounts[0]).call().then((result) => {console.log(result); this.setState({ userRegistered: result })})
 
@@ -138,7 +148,7 @@ class App extends Component {
       .then(num => {
         for (let i = 0; i < num; i++) {
           contract.methods
-            .getAssetItemCount(i)
+            .getAssetItemCount(i, accounts[0])
             .call()
             .then(res => {
               console.log(res)
